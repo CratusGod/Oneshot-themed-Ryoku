@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Lay THE WORLD MACHINE boot wordmark over the ryoku Plymouth theme, then let
+# ryoku-boot-apply rebuild the initramfs (it hashes the theme dir and only
+# rebuilds when the content changed).
+#
+# Replaced in place: doctor deletes any unowned file under
+# /usr/share/plymouth/themes/ryoku, and ryoku-boot-apply forces the theme name
+# back to "ryoku" on every upgrade.
+set -euo pipefail
+
+src=/usr/local/share/twm-boot/logo.png
+dst=/usr/share/plymouth/themes/ryoku/logo.png
+
+[ -f "$src" ] || { echo "twm-boot-logo: $src missing, leaving the shipped logo" >&2; exit 0; }
+[ -d "${dst%/*}" ] || exit 0
+
+cmp -s "$src" "$dst" || install -m644 "$src" "$dst"
+exec /usr/bin/ryoku-boot-apply

@@ -1,0 +1,12 @@
+# Restore THE WORLD MACHINE boot wordmark after ryoku-desktop reinstalls the
+# shipped Plymouth logo. Sorted last so it runs after every other hook.
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = ryoku-desktop
+
+[Action]
+Description = Restoring THE WORLD MACHINE boot splash...
+When = PostTransaction
+Exec = /usr/local/bin/twm-boot-logo
