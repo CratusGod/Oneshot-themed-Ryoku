@@ -57,7 +57,11 @@ remove_lock() {
     say "switching back to $prev (asks for your password)"
     run ryoku-hub lock set "$prev"
   fi
-  run rm -rf "$DATA/qylock/themes/$THEME"
+  if [ -e "$DATA/qylock/themes/.ryostore-lock-$THEME" ] && command -v ryostore >/dev/null; then
+    run ryostore remove lockscreens "$THEME"
+  else
+    run rm -rf "$DATA/qylock/themes/$THEME"
+  fi
   run rm -f "$STATE/prev-lock"
   ok "lock theme removed"
 }

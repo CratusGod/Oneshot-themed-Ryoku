@@ -9,6 +9,10 @@ shell reload screen, and a boot screen.
 
 ## Install
 
+The lock screen is also submitted to RyoStore. Once it is listed, you can install
+it from Ryoku Settings > Lockscreen. The installer below still adds the reload
+and boot screens, and it leaves a Store-installed lock screen alone.
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/CratusGod/Oneshot-themed-Ryoku/main/install.sh | bash
 ```

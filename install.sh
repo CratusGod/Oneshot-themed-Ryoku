@@ -88,11 +88,16 @@ install_lock() {
     [ "$DRY" = 1 ] || printf '%s\n' "$current" >"$STATE/prev-lock"
   fi
 
-  run rm -rf "$themes/$THEME.new"
-  run cp -a "$SRC/lockscreen/$THEME" "$themes/$THEME.new"
-  run rm -rf "$themes/$THEME"
-  run mv "$themes/$THEME.new" "$themes/$THEME"
-  ok "theme copied to $themes/$THEME"
+  if [ -e "$themes/.ryostore-lock-$THEME" ]; then
+    # RyoStore owns this copy; overwriting it would break the Store's own updates
+    ok "installed from RyoStore already; update it there"
+  else
+    run rm -rf "$themes/$THEME.new"
+    run cp -a "$SRC/lockscreen/$THEME" "$themes/$THEME.new"
+    run rm -rf "$themes/$THEME"
+    run mv "$themes/$THEME.new" "$themes/$THEME"
+    ok "theme copied to $themes/$THEME"
+  fi
 
   if [ "$current" = "$THEME" ]; then
     ok "already your active theme"
