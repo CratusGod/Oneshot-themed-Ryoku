@@ -53,8 +53,12 @@ This puts the stock Ryoku look back.
 
 ## Credits
 
-- OneShot and Niko belong to Future Cat. This is a fan project.
-- Background animation by its original artist, signed in the bottom-left corner.
+- OneShot and Niko belong to Future Cat. This is a fan project, not affiliated with Future Cat.
+- Background animation "Memory of a Distant Place" by
+  [Avolicis](https://www.youtube.com/watch?v=eHxaYojFgl8), used with the artist's
+  permission for this free, non-commercial theme.
+- Lightbulb sprite: a free-to-use OneShot lightbulb, original author unknown.
+- "THE WORLD MACHINE" pixel wordmark: original, by CratusGod.
 - Font: Terminus (Terminess Nerd Font), SIL Open Font License, see
   `lockscreen/world-machine/font/LICENSE-Terminus.txt`.
 - Lock screen layout started from the Last of Us theme in
